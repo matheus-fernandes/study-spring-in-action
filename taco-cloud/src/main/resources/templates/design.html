@@ -58,10 +58,23 @@
                 </div>
             </div>
         </div>
-
+        <div>
+             <br/><span class="validationError"
+                   th:if="${#fields.hasErrors('ingredients')}"
+                   th:error="*{ingredients}"
+                   th:text="${#fields.errors('ingredients')}">
+                 Ingredients Error
+             </span>
+        </div>
         <div>
             <h3>Name you taco creation:</h3>
             <input type="text" th:field="*{name}">
+            <span class="validationError"
+                  th:if="${#fields.hasErrors('name')}"
+                  th:error="*{name}"
+                  th:text="${#fields.errors('name')}">
+                Name Error
+            </span>
             <br/>
             <button>Submit Your Taco</button>
         </div>
