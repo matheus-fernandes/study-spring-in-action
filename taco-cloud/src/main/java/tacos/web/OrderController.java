@@ -13,8 +13,6 @@ import tacos.model.TacoOrder;
 import tacos.repository.OrderRepository;
 
 import javax.validation.Valid;
-import java.sql.Date;
-import java.time.Instant;
 
 @Slf4j
 @Controller
@@ -36,7 +34,6 @@ public class OrderController {
             return "orderForm";
         }
 
-        order.setPlacedAt(Date.from(Instant.now()));
         orderRepository.save(order);
         sessionStatus.setComplete();
 
