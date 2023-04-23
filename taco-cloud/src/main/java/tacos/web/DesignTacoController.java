@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import tacos.model.Ingredient;
 import tacos.model.Taco;
 import tacos.model.TacoOrder;
+import tacos.model.TacoUDT;
 import tacos.repository.IngredientRepository;
 
 import javax.validation.Valid;
@@ -55,7 +56,7 @@ public class DesignTacoController {
             return "design";
         }
 
-        tacoOrder.addTaco(taco);
+        tacoOrder.addTaco(new TacoUDT(taco.getName(), taco.getIngredients()));
 
         return "redirect:/orders/current";
     }
