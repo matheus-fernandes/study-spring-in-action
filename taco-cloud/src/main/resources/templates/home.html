@@ -10,6 +10,18 @@
   <h1>Welcome to...</h1>
   <img th:src="@{/images/TacoCloud.jpg}">
 
-  <p>Please <a th:href="@{/register}">register</a> or <a th:href="@{/login}">login</a> to design your taco.</p>
+  <div>
+    <p >Please <a th:href="@{/register}">register</a> or <a th:href="@{/login}">login</a> to design your taco.</p>
+  </div>
+  <div>
+      <form method="POST" th:action="@{/logout}">
+        <input type="submit" value="logout">
+      </form>
+
+      <p><a th:href="@{/design}">Design</a> a new taco!</p>
+  </div>
+
+
+
 </body>
 </html>

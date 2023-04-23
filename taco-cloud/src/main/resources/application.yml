@@ -1,6 +1,16 @@
+server.port: 8081
+
 spring:
   datasource:
     generate-unique-name: false
     name: tacocloud
-  h2.console.enabled: true
-server.port: 8081
+  h2:
+    console.enabled: true
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            clientId: ${facebookClientId}
+            clientSecret: ${facebookClientSecret}
+            scope: email, public_profile
