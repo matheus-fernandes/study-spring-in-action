@@ -9,6 +9,7 @@ import org.springframework.data.cassandra.core.mapping.UserDefinedType;
 @RequiredArgsConstructor(access = AccessLevel.PUBLIC)
 @UserDefinedType("ingredient")
 public class IngredientUDT {
+    private final String id;
     private final String name;
     private final Ingredient.Type type;
 }

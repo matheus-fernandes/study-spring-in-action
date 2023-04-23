@@ -56,7 +56,9 @@ public class DesignTacoController {
             return "design";
         }
 
-        tacoOrder.addTaco(new TacoUDT(taco.getName(), taco.getIngredients()));
+
+
+        tacoOrder.addTaco(new TacoUDT(taco.getId().toString(), taco.getName(), taco.getIngredients()));
 
         return "redirect:/orders/current";
     }

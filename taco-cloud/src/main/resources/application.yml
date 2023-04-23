@@ -1,13 +1,11 @@
 spring:
   data:
     cassandra:
-      keyspace-name: tacoscloud
+      keyspace-name: tacocloud
       schema-action: recreate
       local-datacenter: datacenter1
-      contact-points:
-        - casshost-1.tacocloud.com
-        - casshost-2.tacocloud.com
-        - casshost-3.tacocloud.com
       port: 9043
-      username: tacocloud
-      password: s3cr3tP455w0rd
+      request:
+        timeout: 10s
+server:
+  port: 8081

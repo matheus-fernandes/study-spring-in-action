@@ -13,6 +13,7 @@ import tacos.model.TacoOrder;
 import tacos.repository.OrderRepository;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 @Slf4j
 @Controller
@@ -34,6 +35,7 @@ public class OrderController {
             return "orderForm";
         }
 
+        order.setId(UUID.randomUUID());
         orderRepository.save(order);
         sessionStatus.setComplete();
 
