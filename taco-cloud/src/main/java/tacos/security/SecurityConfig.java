@@ -22,6 +22,7 @@ public class SecurityConfig {
                     .antMatchers("/logout").authenticated()
                     .antMatchers("/design", "/orders", "/orders/current").hasRole("USER")
                     .antMatchers("/", "/register", "/login", "/images/*").permitAll()
+                    .antMatchers("/h2-console").permitAll()
                     .antMatchers("**").denyAll()
                 .and()
                 .formLogin()
