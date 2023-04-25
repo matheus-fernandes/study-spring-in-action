@@ -2,6 +2,7 @@ package tacos.web;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import tacos.model.Ingredient;
 import tacos.model.Taco;
 import tacos.model.TacoOrder;
+import tacos.model.User;
 import tacos.repository.IngredientRepository;
 
 import javax.validation.Valid;
@@ -25,7 +27,7 @@ import static tacos.model.Ingredient.Type;
 public class DesignTacoController {
     private final IngredientRepository ingredientRepository;
     @ModelAttribute
-    public void addIngredientsToModel(Model model){
+    public void addIngredientsToModel(Model model, @AuthenticationPrincipal User user){
         Iterable<Ingredient> ingredients = ingredientRepository.findAll();
 
         Type[] types = Type.values();
