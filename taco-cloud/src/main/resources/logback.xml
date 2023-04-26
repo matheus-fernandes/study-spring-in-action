@@ -1,0 +1,14 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d [%thread] level=%level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <logger name="root" level="DEBUG"/>
+    <logger name="org.springframework.security" level="TRACE"/>
+    <root>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
