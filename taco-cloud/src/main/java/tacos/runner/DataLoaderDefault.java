@@ -3,12 +3,16 @@ package tacos.runner;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import tacos.constant.ProfileConstants;
 import tacos.model.Ingredient;
 import tacos.model.Ingredient.Type;
 import tacos.repository.IngredientRepository;
 
+
+@Profile(ProfileConstants.DEFAULT)
 @Configuration
-public class DataLoaderRunnerConfiguration {
+public class DataLoaderDefault {
 
     @Bean
     public ApplicationRunner dataLoaderRunner(IngredientRepository repository){

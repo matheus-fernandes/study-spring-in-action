@@ -1,11 +1,14 @@
 server:
-  port: 8443
+  port: 8442
   ssl:
-    key-store: classpath:keystore.jks
+    key-store: classpath:security/keystore.jks
     key-store-password: passkey
     key-password: passkey
 
 spring:
+  profiles:
+    default:
+      default
   datasource:
     generate-unique-name: false
     name: tacocloud
@@ -19,3 +22,6 @@ spring:
             clientId: ${FACEBOOK_CLIENT_ID}
             clientSecret: ${FACEBOOK_CLIENT_SECRET}
             scope: email, public_profile
+taco:
+  orders:
+    pageSize: 10
