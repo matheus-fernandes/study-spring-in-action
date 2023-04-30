@@ -15,10 +15,8 @@ import tacos.repository.UserRepository;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthorizeRequestsDecorator authorizeRequestsDecorator) throws Exception{
-        return authorizeRequestsDecorator
-                .decorate(httpSecurity.authorizeRequests())
-                .and()
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, HttpSecurityDecorator httpSecurityDecorator) throws Exception{
+        return httpSecurityDecorator.decorate(httpSecurity)
                 .formLogin()
                     .loginPage("/login")
                     .defaultSuccessUrl("/design")

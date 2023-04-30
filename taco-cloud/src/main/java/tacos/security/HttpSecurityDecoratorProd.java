@@ -8,15 +8,15 @@ import tacos.constant.ProfileConstants;
 
 @Component
 @Profile(ProfileConstants.PROD)
-public class AuthorizeRequestsDecoratorProd implements AuthorizeRequestsDecorator{
-    public ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry decorate(
-            ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry){
+public class HttpSecurityDecoratorProd implements HttpSecurityDecorator {
+    public HttpSecurity decorate(HttpSecurity httpSecurity) throws Exception {
 
-        return registry
+        return httpSecurity.authorizeRequests()
                 .antMatchers("/logout").authenticated()
                 .antMatchers("/design", "/orders", "/orders/current", "/api/tacos").hasRole("USER")
                 .antMatchers("/", "/register", "/login", "/images/*").permitAll()
                 .antMatchers("/h2-console").permitAll()
-                .antMatchers("**").denyAll();
+                .antMatchers("**").denyAll()
+                .and();
     }
 }

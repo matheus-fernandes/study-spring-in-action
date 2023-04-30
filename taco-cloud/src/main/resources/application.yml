@@ -18,6 +18,5 @@ spring:
             clientId: ${FACEBOOK_CLIENT_ID}
             clientSecret: ${FACEBOOK_CLIENT_SECRET}
             scope: email, public_profile
-taco:
-  orders:
-    pageSize: 10
+pagination:
+  tacoPageSize: 10
