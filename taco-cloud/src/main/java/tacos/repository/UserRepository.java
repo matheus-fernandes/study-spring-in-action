@@ -2,7 +2,7 @@ package tacos.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import tacos.model.User;
+import tacos.entity.User;
 
 import java.util.Optional;
 

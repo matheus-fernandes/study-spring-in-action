@@ -1,4 +1,4 @@
-package tacos.model;
+package tacos.entity;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -7,17 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
-import tacos.model.Ingredient;
-import tacos.model.Taco;
-import tacos.model.TacoOrder;
-import tacos.model.User;
+import tacos.entity.Ingredient;
+import tacos.entity.Taco;
+import tacos.entity.TacoOrder;
+import tacos.entity.User;
 import tacos.repository.IngredientRepository;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-import static tacos.model.Ingredient.Type;
+import static tacos.entity.Ingredient.Type;
 
 @Slf4j
 @Controller

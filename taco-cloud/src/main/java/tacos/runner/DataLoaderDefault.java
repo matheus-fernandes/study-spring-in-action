@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import tacos.constant.ProfileConstants;
-import tacos.model.Ingredient;
-import tacos.model.Ingredient.Type;
+import tacos.entity.Ingredient;
+import tacos.entity.Ingredient.Type;
 import tacos.repository.IngredientRepository;
 
 
