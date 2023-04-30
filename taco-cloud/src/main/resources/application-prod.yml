@@ -1,5 +1,10 @@
 server:
   port: 8443
+  ssl:
+    key-store: classpath:security/keystore.jks
+    key-store-password: passkey
+    key-password: passkey
+
 logging:
   level:
     root: INFO

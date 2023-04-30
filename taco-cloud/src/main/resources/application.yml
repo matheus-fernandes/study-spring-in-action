@@ -1,9 +1,5 @@
 server:
   port: 8442
-  ssl:
-    key-store: classpath:security/keystore.jks
-    key-store-password: passkey
-    key-password: passkey
 
 spring:
   profiles:
