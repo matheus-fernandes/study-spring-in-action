@@ -2,7 +2,6 @@ package tacos.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,14 +15,9 @@ import tacos.repository.UserRepository;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
-        return httpSecurity
-                .authorizeRequests()
-                    .antMatchers("/logout").authenticated()
-                    .antMatchers("/design", "/orders", "/orders/current").hasRole("USER")
-                    .antMatchers("/", "/register", "/login", "/images/*").permitAll()
-                    .antMatchers("/h2-console").permitAll()
-                    .antMatchers("**").denyAll()
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthorizeRequestsDecorator authorizeRequestsDecorator) throws Exception{
+        return authorizeRequestsDecorator
+                .decorate(httpSecurity.authorizeRequests())
                 .and()
                 .formLogin()
                     .loginPage("/login")
