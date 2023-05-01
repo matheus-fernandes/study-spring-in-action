@@ -17,6 +17,10 @@ public class OrderService {
     private final TacoService tacoService;
     private final OrderRepository orderRepository;
 
+    public void deleteOrder(Long id){
+        orderRepository.deleteById(id);
+    }
+
     public Order patchOrder(Long id, Order order){
         Order updatedOrder = orderRepository.findById(id)
                 .map((previousOrder) -> {
