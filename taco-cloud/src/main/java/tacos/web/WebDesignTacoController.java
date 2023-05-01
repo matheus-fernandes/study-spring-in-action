@@ -9,7 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import tacos.entity.Ingredient;
 import tacos.entity.Taco;
-import tacos.entity.TacoOrder;
+import tacos.entity.Order;
 import tacos.entity.User;
 import tacos.repository.IngredientRepository;
 
@@ -22,9 +22,9 @@ import static tacos.entity.Ingredient.Type;
 @Slf4j
 @Controller
 @RequestMapping("/design")
-@SessionAttributes("tacoOrder")
+@SessionAttributes("order")
 @RequiredArgsConstructor
-public class DesignTacoController {
+public class WebDesignTacoController {
     private final IngredientRepository ingredientRepository;
     @ModelAttribute
     public void addIngredientsToModel(Model model, @AuthenticationPrincipal User user){
@@ -36,9 +36,9 @@ public class DesignTacoController {
         }
     }
 
-    @ModelAttribute(name = "tacoOrder")
-    public TacoOrder order(){
-        return new TacoOrder();
+    @ModelAttribute(name = "order")
+    public Order order(){
+        return new Order();
     }
 
     @ModelAttribute(name = "taco")
@@ -52,12 +52,12 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute TacoOrder tacoOrder){
+    public String processTaco(@Valid Taco taco, Errors errors, @ModelAttribute Order order){
         if (errors.hasErrors()){
             return "design";
         }
 
-        tacoOrder.addTaco(taco);
+        order.addTaco(taco);
 
         return "redirect:/orders/current";
     }

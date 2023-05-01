@@ -8,13 +8,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import tacos.constant.ProfileConstants;
 import tacos.entity.Ingredient;
 import tacos.entity.Ingredient.Type;
+import tacos.entity.Order;
 import tacos.entity.Taco;
 import tacos.entity.User;
 import tacos.repository.IngredientRepository;
+import tacos.repository.OrderRepository;
 import tacos.repository.TacoRepository;
 import tacos.repository.UserRepository;
 
 import java.util.Arrays;
+import java.util.Date;
 
 
 @Profile(ProfileConstants.DEFAULT)
@@ -22,7 +25,11 @@ import java.util.Arrays;
 public class DataLoaderDefault {
     @Bean
     public ApplicationRunner dataLoaderRunner(
-            IngredientRepository ingredientRepository, UserRepository userRepository, TacoRepository tacoRepository, PasswordEncoder passwordEncoder){
+            IngredientRepository ingredientRepository,
+            UserRepository userRepository,
+            TacoRepository tacoRepository,
+            OrderRepository orderRepository,
+            PasswordEncoder passwordEncoder){
         return args -> {
             Ingredient flourTortilla = new Ingredient("FLTO", "Flour Tortilla", Type.WRAP);
             Ingredient cornTortilla = new Ingredient("COTO", "Corn Tortilla", Type.WRAP);
@@ -77,7 +84,22 @@ public class DataLoaderDefault {
                     "13054587",
                     "19999885588"
             );
-            userRepository.save(user);
+            user = userRepository.save(user);
+
+            Order order = new Order();
+            order.setUser(user);
+            order.setDeliveryName(user.getFullName());
+            order.setDeliveryCity(user.getCity());
+            order.setDeliveryState(user.getState());
+            order.setDeliveryStreet(user.getStreet());
+            order.setDeliveryZip(user.getZip());
+            order.setPlacedAt(new Date());
+            order.setCcCVV("333");
+            order.setCcExpiration("01/27");
+            order.setCcNumber("4391796524153766");
+            order.addTaco(tacoRepository.findById(taco3.getId()).get());
+
+            orderRepository.save(order);
         };
     }
 }

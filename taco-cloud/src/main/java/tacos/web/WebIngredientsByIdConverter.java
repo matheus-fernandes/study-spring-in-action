@@ -8,7 +8,7 @@ import tacos.repository.IngredientRepository;
 
 @Component
 @RequiredArgsConstructor
-public class IngredientsByIdConverter implements Converter<String, Ingredient> {
+public class WebIngredientsByIdConverter implements Converter<String, Ingredient> {
 
     private final IngredientRepository ingredientRepository;
 

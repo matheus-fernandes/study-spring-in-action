@@ -12,7 +12,7 @@ import tacos.repository.UserRepository;
 @Controller
 @RequestMapping("/register")
 @RequiredArgsConstructor
-public class RegistrationController {
+public class WebRegistrationController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
