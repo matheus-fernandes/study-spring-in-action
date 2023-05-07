@@ -1,0 +1,22 @@
+server:
+  port: 9010
+
+spring:
+  datasource:
+    generate-unique-name: false
+    name: tacoauth
+
+logging:
+  level:
+    root: INFO
+
+tacoauth:
+  client:
+    client-id: taco-admin-client
+    secret: ${TACO_AUTH_CLIENT_SECRET}
+    uri: http://127.0.0.1:9090/login/oauth2/code/taco-admin-client
+    scopes:
+      - writeIngredients
+      - deleteIngredients
+
+

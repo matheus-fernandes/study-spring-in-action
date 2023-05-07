@@ -15,6 +15,9 @@ spring:
     console.enabled: true
   security:
     oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9010/oauth2/jwks
       client:
         registration:
           facebook:
