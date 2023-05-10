@@ -8,13 +8,11 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import tacos.entity.Order;
-import tacos.entity.Taco;
 import tacos.entity.User;
-import tacos.repository.OrderRepository;
+import tacos.messaging.OrderJmsSender;
 import tacos.service.OrderService;
 
 import javax.validation.Valid;
-import java.util.Date;
 
 @Slf4j
 @Controller
@@ -24,6 +22,8 @@ import java.util.Date;
 public class WebOrderController {
 
     private final OrderService orderService;
+
+    private final OrderJmsSender orderJmsSender;
 
     @GetMapping("/current")
     public String orderForm(Order order, @AuthenticationPrincipal User user){
@@ -45,6 +45,8 @@ public class WebOrderController {
 
         order.setUser(user);
         orderService.save(order);
+        orderJmsSender.sendOrder(order);
+
         sessionStatus.setComplete();
 
         return "redirect:/";
