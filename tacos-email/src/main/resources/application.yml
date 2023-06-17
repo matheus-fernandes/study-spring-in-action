@@ -1,0 +1,12 @@
+spring:
+  main:
+    web-application-type: none
+
+tacocloud:
+  email:
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    host: imap.gmail.com:993
+    mailbox: INBOX
+    pollRate: 30000
+
