@@ -89,7 +89,7 @@ class CreateFluxTest {
     @Test
     void createFluxInterval(){
         Flux<Long> intervalFlux = Flux
-                .interval(Duration.ofSeconds(1))
+                .interval(Duration.ofMillis(100))
                 .take(5)
                 .log();
 
