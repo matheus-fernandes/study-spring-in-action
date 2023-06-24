@@ -1,4 +1,4 @@
-package com.study.reactor;
+package com.study.reactor.examples;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -96,11 +96,11 @@ class CreateFluxTest {
         intervalFlux.subscribe(i -> log.debug(i.toString()));
 
         StepVerifier.create(intervalFlux)
-                .expectNext(0l)
-                .expectNext(1l)
-                .expectNext(2l)
-                .expectNext(3l)
-                .expectNext(4l)
+                .expectNext(0L)
+                .expectNext(1L)
+                .expectNext(2L)
+                .expectNext(3L)
+                .expectNext(4L)
                 .verifyComplete();
     }
 }
