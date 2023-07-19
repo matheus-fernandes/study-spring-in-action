@@ -7,13 +7,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 
 import java.util.Set;
-import java.util.UUID;
 
 @Data
 @NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 public class Taco {
     @Id
+    @NonNull
     private String id;
 
     @NonNull

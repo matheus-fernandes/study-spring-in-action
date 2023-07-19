@@ -28,8 +28,7 @@ class TacoRepositoryITest {
     }
 
     Mono<Taco> tacoMono(String id, String name){
-        Taco taco = new Taco("My Taco");
-        taco.setId(id);
+        Taco taco = new Taco(id, "My Taco");
         return Mono.just(taco);
     }
 }
