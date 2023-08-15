@@ -17,7 +17,7 @@ class TacoRepositoryITest {
 
     @Test
     void test(){
-        String id = "TEST_ID";
+        Long id = 1L;
         String name = "My Taco";
 
         tacoMono(id, name)
@@ -27,8 +27,9 @@ class TacoRepositoryITest {
                 .expectNextMatches(t -> name.equals(t.getName()));
     }
 
-    Mono<Taco> tacoMono(String id, String name){
-        Taco taco = new Taco(id, "My Taco");
+    Mono<Taco> tacoMono(Long id, String name){
+        Taco taco = new Taco("My Taco");
+        taco.setId(id);
         return Mono.just(taco);
     }
 }

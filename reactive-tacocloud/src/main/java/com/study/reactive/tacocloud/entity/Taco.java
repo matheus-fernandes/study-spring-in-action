@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -13,12 +14,15 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class Taco {
     @Id
-    @NonNull
-    private String id;
+    private Long id;
 
     @NonNull
     private String name;
 
-    private Set<Long> ingredients;
+    private Set<Long> ingredients = new HashSet<>();
+
+    public void addIngredient(Ingredient ingredient){
+        ingredients.add(ingredient.getId());
+    }
 }
 

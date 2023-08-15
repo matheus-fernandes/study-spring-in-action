@@ -1,16 +1,23 @@
 package com.study.reactive.tacocloud.entity;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.Id;
 
-@Getter
+@Data
+@NoArgsConstructor
 @RequiredArgsConstructor
+@EqualsAndHashCode(exclude = "id")
 public class Ingredient {
-    private final String id;
-    private final String name;
-    private final Type type;
+    @Id
+    private Long id;
+    @NonNull
+    private String slug;
+    @NonNull
+    private String name;
+    @NonNull
+    private Type type;
 
     public enum Type{
-        VEGGIES
+        WRAP, PROTEIN, VEGGIES, CHEESE, SAUCE
     }
 }

@@ -54,11 +54,14 @@ class TacoControllerTest {
 
     @Test
     public void shouldSaveTaco(){
-        Mono<Taco> unsavedTaco = Mono.just(new Taco("123456789", "New Taco"));
+        Taco unsavedTaco = new Taco("New Taco");
+        unsavedTaco.setId(123456789L);
+
+        Mono<Taco> unsavedTacoMono = Mono.just(unsavedTaco);
 
         webTestClient.post()
                 .uri("/api/tacos")
-                .body(unsavedTaco, Taco.class)
+                .body(unsavedTacoMono, Taco.class)
                 .exchange()
                 .expectStatus().isCreated()
                 .expectBody()

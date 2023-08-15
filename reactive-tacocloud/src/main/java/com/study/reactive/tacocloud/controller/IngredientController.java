@@ -5,18 +5,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-import java.time.Duration;
-
 @RestController
 @RequestMapping("/ingredients")
 public class IngredientController {
 
-    @GetMapping("/{id}")
-    public Mono<ResponseEntity<Ingredient>> getIngredient(@RequestParam("id") String id){
-        if ("TMT".equals(id)){
+    @GetMapping("/{slug}")
+    public Mono<ResponseEntity<Ingredient>> getIngredient(@RequestParam("slug") String slug){
+        if ("TMT".equals(slug)){
             return Mono.just(
                     ResponseEntity.ok(
-                            new Ingredient(id, "Tomato", Ingredient.Type.VEGGIES)));
+                            new Ingredient(slug, "Tomato", Ingredient.Type.VEGGIES)));
         }
 
         return Mono.just(
