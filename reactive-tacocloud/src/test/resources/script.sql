@@ -21,7 +21,7 @@ create table Orders (
     cc_number varchar(16) not null,
     cc_expiration varchar(5) not null,
     cc_cvv varchar(3) not null,
-    tacos integer[]
+    taco_ids integer[]
 );
 
 insert into Taco (id, name, ingredients) values (123456789, 'Taco 1', ARRAY[1, 2, 3]);
